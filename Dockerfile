@@ -2,7 +2,6 @@ FROM ubuntu:18.04
 
 # Install chrome and firefox
 ARG CHROME_VERSION="96.0.4664.45-1"
-RUN 
   
 RUN apt update \
   && apt install -y unzip gnupg2 curl wget git make build-essential g++ default-jdk \
@@ -10,7 +9,7 @@ RUN apt update \
   && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
   && apt update \
   && apt install -y firefox \
-  && wget --no-verbose -O /tmp/chrome.deb https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}_amd64.deb \
+  && wget -q -O /tmp/chrome.deb https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}_amd64.deb \
   && apt install -y /tmp/chrome.deb \
   && rm /tmp/chrome.deb
 
